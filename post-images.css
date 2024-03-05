@@ -1,0 +1,369 @@
+@charset "utf-8";
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    /* 要素に間隔含む */
+    font-family: ヒラギノ角ゴ;  /* ＊に指定するとボタンやインプットタグにも適用 */
+}
+
+:root {
+    scroll-padding: 20vh;
+    /* スクロールの際の上限位置を設定 */
+    /* ヘッダーにリンク先が隠れないようにする */
+}
+
+html {
+    font-size: 100%;
+    /* 16px */
+    font-weight: 400;
+    font-style: normal;
+    overflow-y: scroll;
+    /* スクロールバー常に表示 */
+}
+
+body {
+    background: #FFF;
+    overflow: hidden;
+    font-weight: bold;
+}
+
+
+a {
+    color: #000;
+    text-decoration: none;
+    /* 下線を消す */
+}
+
+
+/* a:hover {
+    opacity: 0.5;
+} */
+
+ul {
+    list-style: none;
+    /* リストの点を消す */
+}
+
+
+
+/*----- ヘッダー ------------------------------------*/
+
+header {
+    /* background: #FFF; */
+    background-color: rgba(252, 252, 252, 0.8);
+    /*-- 色は白、透明度は0.8の場合 --*/
+    width: 100vw;
+    height: 20vh;
+    position: fixed;
+    /* 固定  */
+    display: flex;
+    /* 横並び */
+    justify-content: space-around;
+    /* 水平方向に均等配置 */
+    align-items: center;
+    z-index: 99;
+    /* 表示を先頭に */
+}
+
+@media screen and (max-width: 400px) {
+    header {
+        height: 15vh;
+    }
+}
+
+/* ヘッダータイトル */
+.header_title {
+    margin: 10px;
+    text-align: center;
+    /* 中央寄せ */
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+@media screen and (max-width: 400px) {
+    .header_title {
+        font-size: 1.5rem;
+    }
+}
+
+/* ヘッダーナビ */
+.header_nav {
+    display: flex;
+    margin: 10px;
+    padding: 1rem 1rem;
+    gap: 20px;
+    font-weight: bold;
+    border: none;
+}
+
+/* ヘッダーハンバーガーメニュー */
+.header_hamburger {
+    margin: 10px;
+    border: none;
+    /* 枠線なし */
+    background: transparent;
+    /* 透明色 */
+    cursor: pointer;
+    /* 指差しマーク */
+    display: none;
+    
+}
+
+.header_hamburger:hover {
+    opacity: 0.5;
+    /* 透明度下げる  */
+}
+
+/* ハンバーガーの３本線 */
+.header_hamburger span {
+    display: block;
+    background-color: #000;
+    width: 25px;
+    height: 3px;
+    margin: 5px;
+    position: relative;
+    /* 表示位置を基準にする */
+}
+
+/* レスポンシブ　ブレイクポイント */
+@media screen and (max-width: 768px) {
+
+    body {
+        overflow: hidden;
+        /* はみ出た部分を隠す */
+    }
+
+    .header_nav {
+        position: absolute;
+        /* 親要素を基準 */
+        right: 0;
+        top: 20vh;
+        height: 50vh;
+        width: 40vw;
+        margin: 0;
+        background: #FFF;
+        flex-direction: column;
+        /* 縦並び */
+        align-items: center;
+        transform: translatex(100%);
+        /* */
+    }
+
+    .header_nav li {
+        margin: auto;
+    }
+
+    .header_hamburger {
+        display: block;
+        /* ハンバーガーメニュー出現 */
+    }
+
+}
+
+@media screen and (max-width: 400px) {
+    .header_nav {
+        position: absolute;
+        /* 親要素を基準 */
+        right: 0;
+        top: 15vh;
+    }
+}
+
+
+/* ハンバーガークリック時の動き */
+.header_nav.active {
+    transform: translatex(0%);
+    /*  ナビメニュー出現 */
+}
+
+.sp1.active {
+    top: 5px;
+    transform: rotate(45deg);
+}
+
+.sp2.active {
+    opacity: 0;
+    /* 真ん中は見えなくする */
+}
+
+.sp3.active {
+    top: -11px;
+    transform: rotate(-45deg);
+}
+
+/*----- メイン ------------------------------------------*/
+
+.container {
+    width: 100vw;
+}
+
+main {
+    padding-top: 20vh;
+    /* ヘッダー固定の分下にずらす */
+}
+
+@media screen and (max-width: 400px) {
+    main {
+        padding-top: 15vh;
+        /* ヘッダー固定の分下にずらす */
+    }
+}
+
+
+/* セクションタイトル */
+h1 {
+    margin: 5vh auto 5vh auto;
+    padding-top: 5vh;
+    text-align: center;  /* 中央寄せ */
+    text-decoration: underline;  /* 下線 */
+}
+
+.header-post {
+  width: 100%;
+  height: 10vh;
+  background-color: #EEEEEE;
+  display: flex;
+  justify-content: end;
+}
+
+.postImage {
+  margin: 10px;
+}
+
+/* 画像投稿アプリ用buttonタグCSS */
+button {
+  color: #fff;
+  background-color: #44AFFD;
+  width: 90px;
+  height: auto;
+  align-items: center;
+  border-radius: 5px;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  font-family: ヒラギノ角ゴ; 
+  margin-right: 2vw;
+}
+
+button:hover {
+  opacity: 70%;
+}
+
+/* TOPページ　画像一覧 ------------------------------------------ */
+
+/* 画像一覧ページ */
+.imageList {
+  width: 90%;
+  margin: 10px auto 0 auto;
+  display: flex;
+  flex-wrap: wrap;  /* 子要素を折り返しさせ、上から下へ複数行で並べる */
+  justify-content: center; /* 中央配置 */
+}
+
+.imageList img {
+  width: 300px;
+  height: auto;
+  object-fit: cover;
+  margin: 10px;
+  cursor: pointer;
+}
+
+.imageList img:hover {
+  opacity: 70%;
+}
+
+
+/* 画像投稿ページ ------------------------------------------ */
+
+.submitImage {
+  width: 100vw;
+  margin: 10vh auto 0 auto;
+  text-align: center;
+}
+
+#preview {
+  margin: 0 auto;
+  width: 80vw;
+  height: 50vh;
+  /* object-fit: cover; */
+  border: 1px dashed #ccc;
+}
+
+.submitImage input {
+  width: 70%;
+  height: auto;
+  border: 1px dashed #ccc;
+  margin: 5vh auto;
+}
+
+.backButton {
+  margin: 1vh auto;
+  background-color: #000;
+}
+
+/* 画像詳細ページ ------------------------------------------ */
+
+/* 画像詳細ページ */
+.detailImageBox {
+  width: 100vw;
+  margin: 10vh auto 0 auto;
+  text-align: center;
+  display: flex;
+}
+
+/* 画像 */
+.detailImage {
+  width: 100vw;
+}
+
+.detailImage img {
+    width: 80vw;
+    height: auto;
+  /* object-fit: cover; */
+}
+
+.detailImagButton {
+  width: 50%;
+  margin: 10vh auto 10vh auto;
+  display: flex;
+  justify-content: space-around;
+}
+
+.updateButton {
+  background-color: #78E40C;
+}
+
+.deleteButton {
+  background-color: #FF0000;
+}
+
+/*----- トップへ戻る ---------------------------------------*/
+.pagetop {
+    position: fixed;
+    /* 右下に固定 */
+    bottom: 2vh;
+    right: 2vw;
+    background: #8EB8FF;
+    border-radius: 5px;
+}
+
+.pagetop a {
+    display: block;
+    text-decoration: none;
+    padding: 5px;
+    font-weight: bold;
+}
+
+.pagetop:hover {
+    opacity: 0.85;
+}
+
+
+/*----- フッター --------------------------------------------*/
+.footer {
+    height: 10vh;
+}
+
+
